@@ -1,0 +1,31 @@
+http:
+  services:
+    app-one:
+      loadBalancer:
+        servers:
+          - url: "http://app-one"
+    app-two:
+      loadBalancer:
+        servers:
+          - url: "http://app-two"
+    app-three:
+      loadBalancer:
+        servers:
+          - url: "http://app-three"
+
+  routers:
+    app-one-http:
+      entryPoints:
+        - http
+      rule: "Host(app1.com)"
+      service: app-one
+    app-two-http:
+      entryPoints:
+        - http
+      rule: "Host(app2.com)"
+      service: app-two
+    app-three-http:
+      entryPoints:
+        - http
+      rule: "Host(app3.com)"
+      service: app-three
