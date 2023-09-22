@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: iot-p3-proj
+  labels:
+    app: iot-p3
+spec:
+  description: My first ArgoCD Project
+  sourceRepos:
+  - "https://github.com/cos18/*"
+  destinations:
+  - namespace: dev
+    server: https://kubernetes.default.svc
+  orphanedResources:
+    warn: false

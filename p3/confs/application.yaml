@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: iot-p3-app
+  labels:
+    app: iot-p3
+spec:
+  project: iot-p3-proj
+  source:
+    repoURL: https://github.com/cos18/sunpark-iot.git
+    targetRevision: HEAD
+    path: source
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
